@@ -6,18 +6,20 @@ public:
 	Ball();
     void Update();
     sf::Vector2f* ballSpeed;
-
+    int i;
+    int v;
 private:
     float EARTH_GRAVITY;
     float bouce_fac;
     float time;
-    int i;
+    
     int k;
     int j;
     int l;
     int z;
     int q;
     int w;
+
     float up;
     bool ground;
     bool top;
@@ -41,11 +43,12 @@ Ball::Ball()
      q = 0;
      w = 0;
      up = 0;
+     v = 0;
      ground = false;
      top = false;
      c = 0;
-     max_speed = 30;
-     anti_gravity = 20;
+     max_speed = 50;
+     anti_gravity = 30;
 }
 
 
@@ -73,7 +76,7 @@ void Ball::Update()
     {
 
 
-        if (this->getPosition().y > 20 && i - l > 30 && ground == true)
+        if (this->getPosition().y > 20 && i - l > 30 )
         {
             ground = false;
             ballSpeed->y = -anti_gravity;
