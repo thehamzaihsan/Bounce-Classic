@@ -44,14 +44,29 @@ void Game::Start() {
 
 
 
-void Game::Update() {
+void Game::Update() 
+{
 	ball.Update();
-
+	
 	if (ball.getGlobalBounds().intersects(test_tile.getGlobalBounds()))
 	{
-		std::cout << "collision" << std::endl;
-		ball.ballSpeed->x *= -1;
-		ball.ballSpeed->y *= -1;
+		if (ball.i - ball.v > 5) 
+		{
+			std::cout << "collision" << std::endl;
+			
+			if (ball.getPosition().y <= test_tile.getPosition().y || ball.getPosition().y >= test_tile.getPosition().y + 100)
+			{
+				if (ball.ballSpeed->y > 0)
+					ball.setPosition(ball.getPosition().x, test_tile.getPosition().y - ball.getRadius() * 2);
+				if (ball.ballSpeed->y < 0)
+					ball.setPosition(ball.getPosition().x, test_tile.getPosition().y + 100 + ball.getRadius() * 2);
+				ball.ballSpeed->y *= -1;
+				
+			}
+			else if (ball.getPosition().y > test_tile.getPosition().y || ball.getPosition().y < test_tile.getPosition().y + 100)
+				ball.ballSpeed->x *= -1;
+			ball.v = ball.i;
+		}
 	}
 }
 

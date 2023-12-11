@@ -11,7 +11,7 @@ private:
 
 Tile::Tile()
 {
-	this->setPosition(sf::Vector2f(300, 550));
-	this->setSize(sf::Vector2f(50, 50));
+	this->setPosition(sf::Vector2f(300, 300));
+	this->setSize(sf::Vector2f(100, 100));
 }
 
